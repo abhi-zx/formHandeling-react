@@ -6,9 +6,9 @@ const Form1 = () => {
         password:""
     })
     const handelChange =(e)=>{
-        setValue(e.target.value)
-        console.log(value)
-      
+        const { name } = e.target;
+        setValue({...value, [name]:e.target.value})
+     
     }
     return (
         <div>
@@ -16,7 +16,10 @@ const Form1 = () => {
                 <h1>Sign up Page</h1>
                 <input type="text"  name="email" value={value.email} onChange={handelChange} placeholder="Email Address..."></input>
                 <input type="text" name="password"  value={value.password} onChange={handelChange} placeholder="Enter Password..."></input>
-                <input type="submit" />
+                <input onClick={(e)=>{
+                    e.preventDefault();
+                    console.log(value)
+                }} type="submit" />
             </form>
 
         </div>
